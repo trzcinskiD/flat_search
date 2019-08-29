@@ -1,4 +1,5 @@
 const Config = require("./Config");
+// Jeśli masz ten kod z mojego GitLab -> utwórz plik secretConfig z API do Sendgrid "sendGridAPI"
 const secretConfig = require("./secretConfig");
 const nodemailer = require("nodemailer");
 const sendgridTransport = require("nodemailer-sendgrid-transport");
