@@ -7,6 +7,7 @@ let offers = [];
 
 function getOffers() {
   Scraper().then(newOffers => {
+    console.log(newOffers);
     const beforeScraperOffersLength = offers.length;
     //Filtrujemy unikalne obiekty na podstawie adresu url z olx.pl
     offers = _.uniqBy([...offers, ...newOffers], "url");
@@ -17,5 +18,6 @@ function getOffers() {
     }
   });
 }
-
+console.log("Start running");
 setInterval(getOffers, Config.refreshTime);
+//getOffers();

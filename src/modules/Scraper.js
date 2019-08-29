@@ -14,9 +14,11 @@ module.exports = async () => {
         title: offer.querySelector("strong").innerText,
         url: offer.querySelector(".link").getAttribute("href"),
         price: offer.querySelector(".price strong").innerText,
-        location: offer.querySelector(".breadcrumb").innerText
+        location: offer.querySelectorAll(".breadcrumb")["1"].innerText,
+        time: offer.querySelectorAll(".breadcrumb")["2"].innerText
       };
     });
+    //console.log(offersTitles);
     return offersTitles;
   });
   await browser.close();
