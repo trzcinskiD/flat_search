@@ -1,4 +1,5 @@
 // Pobranie danych ze strony i zwrócenie informacji do dalszego przetwarzania
+const _ = require("lodash");
 const puppeteer = require("puppeteer");
 const Config = require("./Config");
 
@@ -18,9 +19,12 @@ module.exports = async () => {
         time: offer.querySelectorAll(".breadcrumb")["2"].innerText
       };
     });
-    //console.log(offersTitles);
     return offersTitles;
   });
   await browser.close();
-  return fetchedOffers;
+  const filteredFetchetOffers = _.filter(
+    fetchedOffers,
+    o => !Config.filters.notWantedLocalizations.includes(o.location)
+  );
+  return filteredFetchetOffers;
 };
