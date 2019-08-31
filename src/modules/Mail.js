@@ -6,7 +6,7 @@ const sendgridTransport = require("nodemailer-sendgrid-transport");
 
 module.exports = newOffers => {
   const transporter = nodemailer.createTransport(
-    sendgridTransport({ auth: { api_key: secretConfig.sendGridAPI } })
+    sendgridTransport({ auth: { api_key: secretConfig.sendGridAPI || process.env.SENDGRIDAPI } })
   );
   //Generuj treść HTML
   const html = generateMailHtml(newOffers);
