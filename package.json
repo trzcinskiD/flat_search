@@ -1,4 +1,11 @@
 {
+  "name": "flat_search",
+  "version": "1.0.0",
+  "license": "MIT",
+  "engines": {
+    "node": "12.6.0",
+    "yarn": "1.17.3"
+  },
   "dependencies": {
     "dotenv": "^8.1.0",
     "lodash": "^4.17.15",
