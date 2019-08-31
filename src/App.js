@@ -21,5 +21,4 @@ function getOffers() {
   });
 }
 console.log("Start running");
-getOffers();
 setInterval(getOffers, Config.refreshTime);
