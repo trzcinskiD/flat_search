@@ -1,4 +1,5 @@
 // Uruchomienie Scraper.js i decyzja czy wysłać maila
+require('dotenv').config()
 const Scraper = require("./modules/Scraper");
 const Mail = require("./modules/Mail");
 const Config = require("./modules/Config");
@@ -12,8 +13,10 @@ function getOffers() {
     offers = _.uniqBy([...offers, ...newOffers], "url");
     //Jeśli pojawiły się nowe oferty
     if (offers.length > beforeScraperOffersLength) {
+      const howManyNewOffers = offers.length - beforeScraperOffersLength;
+      const onlyNewOffers = _.takeRight(offers, howManyNewOffers);
       //Wysyłamy maila
-      Mail(offers);
+      Mail(onlyNewOffers);
     }
   });
 }

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "dotenv": "^8.1.0",
     "lodash": "^4.17.15",
     "nodemailer": "^6.3.0",
     "nodemailer-sendgrid-transport": "^0.2.0",
