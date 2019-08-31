@@ -1,12 +1,12 @@
 const Config = require("./Config");
 // Jeśli masz ten kod z mojego GitLab -> utwórz plik secretConfig z API do Sendgrid "sendGridAPI"
-const secretConfig = require("./secretConfig");
+// const secretConfig = require("./secretConfig");
 const nodemailer = require("nodemailer");
 const sendgridTransport = require("nodemailer-sendgrid-transport");
 
 module.exports = newOffers => {
   const transporter = nodemailer.createTransport(
-    sendgridTransport({ auth: { api_key: secretConfig.sendGridAPI || process.env.SENDGRIDAPI } })
+    sendgridTransport({ auth: { api_key: /* secretConfig.sendGridAPI || */ process.env.SENDGRIDAPI } })
   );
   //Generuj treść HTML
   const html = generateMailHtml(newOffers);
