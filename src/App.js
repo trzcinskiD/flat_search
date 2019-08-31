@@ -1,5 +1,5 @@
 // Uruchomienie Scraper.js i decyzja czy wysłać maila
-require('dotenv').config()
+require("dotenv").config();
 const Scraper = require("./modules/Scraper");
 const Mail = require("./modules/Mail");
 const Config = require("./modules/Config");
@@ -21,4 +21,5 @@ function getOffers() {
   });
 }
 console.log("Start running");
+getOffers();
 setInterval(getOffers, Config.refreshTime);
