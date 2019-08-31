@@ -4,7 +4,6 @@
   "license": "MIT",
   "engines": {
     "node": "12.6.0",
-    "npm": "6.11.2",
     "yarn": "1.17.3"
   },
   "dependencies": {
