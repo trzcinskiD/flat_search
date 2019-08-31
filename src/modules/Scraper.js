@@ -4,7 +4,7 @@ const puppeteer = require("puppeteer");
 const Config = require("./Config");
 
 module.exports = async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
   const page = await browser.newPage();
   await page.goto(Config.pageURL);
   // evaulate uruchamia callbacka zawierającego context strony
