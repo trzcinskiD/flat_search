@@ -1,0 +1,15 @@
+const { Stitch, RemoteMongoClient } = require("mongodb-stitch-server-sdk");
+
+// Initialize the App Client
+const client = Stitch.initializeDefaultAppClient("olxsearcher-sorfe");
+
+// Get a MongoDB Service Client
+const mongodb = client.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas-olxSearcher");
+
+// Get a reference to the my database
+const db = mongodb.db("olx");
+
+module.exports = { db, client };
+
+// const { AnonymousCredential } = require("mongodb-stitch-server-sdk");
+// client.auth.loginWithCredential(new AnonymousCredential());
