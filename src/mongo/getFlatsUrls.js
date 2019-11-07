@@ -5,10 +5,18 @@ const getFlatsUrls = async () => {
   try {
     const flatUrls = await db
       .collection("flats")
-      .find({}, { projection: { _id: 0, title: 0, price: 0, location: 0, time: 0 } })
+      .find({}, { projection: { url: 1 } })
       .toArray();
     const flatUrlsArray = flatUrls.map(e => e.url);
-    return flatUrlsArray;
+
+    const deletedFlatUrls = await db
+      .collection("deletedFlats")
+      .find({}, { projection: { url: 1 } })
+      .toArray();
+    const deletedFlatUrlsArray = deletedFlatUrls.map(e => e.url);
+
+    const fullFlatUrlsArray = flatUrlsArray.concat(deletedFlatUrlsArray);
+    return fullFlatUrlsArray;
   } catch (err) {
     console.log(err);
   }

@@ -9,7 +9,7 @@ module.exports = () => {
     newOffers => {
       client.auth.loginWithCredential(new AnonymousCredential()).then(async () => {
         const uniqOffers = await toUniqOffers(newOffers);
-        addFlats(uniqOffers);
+        uniqOffers.length > 0 ? addFlats(uniqOffers) : console.log(`0 documents added`);
       });
     },
     err => console.log(err)

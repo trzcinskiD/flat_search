@@ -4,7 +4,6 @@ const puppeteer = require("puppeteer");
 const Config = require("./Config");
 
 module.exports = async () => {
-  console.log('Scraper starts')
   const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
   const page = await browser.newPage();
   await page.goto(Config.pageURL, { waitUntil: "domcontentloaded" });
@@ -17,7 +16,8 @@ module.exports = async () => {
         url: offer.querySelector(".link").getAttribute("href"),
         price: offer.querySelector(".price strong").innerText,
         location: offer.querySelectorAll(".breadcrumb")["1"].innerText,
-        time: offer.querySelectorAll(".breadcrumb")["2"].innerText
+        time: offer.querySelectorAll(".breadcrumb")["2"].innerText,
+        photo: offer.querySelector(".fleft") ? offer.querySelector(".fleft").getAttribute("src") : null
       };
     });
     return offersTitles;
@@ -27,6 +27,5 @@ module.exports = async () => {
     fetchedOffers,
     o => !Config.filters.notWantedLocalizations.includes(o.location)
   );
-  console.log('Scraper return offers')
   return filteredFetchetOffers;
 };

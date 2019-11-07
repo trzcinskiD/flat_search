@@ -10,6 +10,3 @@ const mongodb = client.getServiceClient(RemoteMongoClient.factory, "mongodb-atla
 const db = mongodb.db("olx");
 
 module.exports = { db, client };
-
-// const { AnonymousCredential } = require("mongodb-stitch-server-sdk");
-// client.auth.loginWithCredential(new AnonymousCredential());
